@@ -1,0 +1,78 @@
+{
+  "rss_feeds": [
+    {
+      "url": "https://example.com/prophecy-feed.xml",
+      "name": "Prophecy News",
+      "enabled": true,
+      "check_interval_hours": 6
+    },
+    {
+      "url": "https://example.com/biblical-news.xml",
+      "name": "Biblical Updates",
+      "enabled": true,
+      "check_interval_hours": 12
+    }
+  ],
+  "scoring": {
+    "prophecy_keywords": [
+      "prophecy",
+      "biblical",
+      "revelation",
+      "eschatology",
+      "end times",
+      "apocalypse",
+      "messiah",
+      "tribulation",
+      "rapture",
+      "millennium",
+      "daniel",
+      "ezekiel",
+      "jerusalem",
+      "israel",
+      "temple",
+      "antichrist",
+      "armageddon"
+    ],
+    "keyword_weights": {
+      "high": 2.0,
+      "medium": 1.0,
+      "low": 0.5
+    },
+    "high_priority_keywords": [
+      "prophecy",
+      "biblical prophecy",
+      "end times",
+      "revelation"
+    ],
+    "threshold": 5.0
+  },
+  "scraper": {
+    "user_agents": [
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+    ],
+    "timeout_ms": 10000,
+    "max_retries": 3,
+    "respect_robots_txt": true,
+    "max_crawl_depth": 3,
+    "max_pages_per_domain": 100,
+    "delay_between_requests_ms": 1000
+  },
+  "storage": {
+    "type": "r2",
+    "postgres": {
+      "enabled": false,
+      "connection_string": "postgresql://user:pass@host:5432/dbname"
+    },
+    "r2": {
+      "enabled": true,
+      "bucket_prefix": "crawls/"
+    }
+  },
+  "ai_summarization": {
+    "enabled": true,
+    "model": "openai",
+    "max_summary_length": 500,
+    "include_key_points": true
+  }
+}

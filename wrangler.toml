@@ -1,0 +1,55 @@
+name = "cloudflare-scraping-agent"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+node_compat = true
+
+# Environment variables
+[vars]
+ENVIRONMENT = "development"
+RSS_SCORE_THRESHOLD = "5.0"
+MAX_CRAWL_DEPTH = "3"
+RATE_LIMIT_REQUESTS = "10"
+RATE_LIMIT_WINDOW = "60"
+
+# R2 Bucket binding for storage
+[[r2_buckets]]
+binding = "CRAWL_BUCKET"
+bucket_name = "scraper-storage"
+preview_bucket_name = "scraper-storage-preview"
+
+# D1 Database for metadata caching
+[[d1_databases]]
+binding = "DB"
+database_name = "scraper-metadata"
+database_id = "your-database-id"
+
+# Queue for async scraping jobs
+[[queues.producers]]
+binding = "SCRAPE_QUEUE"
+queue = "scraper-jobs"
+
+[[queues.consumers]]
+queue = "scraper-jobs"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+
+# KV namespace for caching
+[[kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-id"
+preview_id = "your-kv-preview-id"
+
+# Cron triggers for RSS monitoring
+[triggers]
+crons = ["0 */6 * * *"]  # Run every 6 hours
+
+# Production environment
+[env.production]
+name = "cloudflare-scraping-agent-production"
+vars = { ENVIRONMENT = "production" }
+
+# Staging environment
+[env.staging]
+name = "cloudflare-scraping-agent-staging"
+vars = { ENVIRONMENT = "staging" }
