@@ -1,0 +1,32 @@
+{
+  "name": "cloudflare-scraping-agent",
+  "version": "1.0.0",
+  "description": "Autonomous Cloudflare-native web scraper with RSS integration and prophecy scoring",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "test": "vitest"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "scraper",
+    "rss",
+    "crawler",
+    "autonomous"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "rss-parser": "^3.13.0",
+    "turndown": "^7.1.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231218.0",
+    "wrangler": "^3.22.0",
+    "vitest": "^1.1.0"
+  }
+}

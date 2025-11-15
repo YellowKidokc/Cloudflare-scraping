@@ -1,0 +1,26 @@
+# Development Environment Variables
+# Copy this file to .dev.vars and fill in your actual values
+# NEVER commit .dev.vars to version control
+
+# RSS Scoring Configuration
+RSS_SCORE_THRESHOLD=5.0
+MAX_CRAWL_DEPTH=3
+
+# Rate Limiting
+RATE_LIMIT_REQUESTS=10
+RATE_LIMIT_WINDOW=60
+
+# Admin Authentication
+ADMIN_API_KEY=your-secret-admin-key-here
+
+# AI Services (Optional)
+# Uncomment and configure if using AI summarization
+# OPENAI_API_KEY=sk-your-openai-key-here
+
+# Postgres Configuration (Optional)
+# Uncomment if using Postgres instead of/in addition to R2
+# POSTGRES_API_ENDPOINT=https://your-postgres-api.example.com
+# POSTGRES_API_KEY=your-postgres-api-key
+
+# Development Settings
+ENVIRONMENT=development
